@@ -59,6 +59,22 @@
     color: white;
     text-align: center;
         }
+        /* Tamni sloj preko slike da bi se tekst bolje video */
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4); /* Podesi zadnji broj za jaču ili slabiju tamu */
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2; /* Postavlja tekst iznad overlay-a */
+    padding: 0 20px;
+}
         .hero-content h1 { font-size: 3rem; text-transform: uppercase; letter-spacing: 2px; }
 
         /* --- SADRŽAJ --- */
