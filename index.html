@@ -108,24 +108,7 @@
     z-index: 2; /* Postavlja tekst iznad overlay-a */
     padding: 0 20px;
 }
-/* Kreiramo "sloj" za logo u pozadini */
-.hero::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    /* Putanja do tvog logotipa */
-    background-image: url('Logo-rational-komerc.png');
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: 40%; /* Podesi koliko veliki želiš da bude logo */
-    
-    /* KLJUČNI DEO: Providnost */
-    opacity: 0.5; /* 0.05 znači da je skoro providan (kao vodeni žig) */
-    z-index: 1;    /* Ide iza teksta */
-}
+
 @media (max-width: 768px) {
     .hero {
         height: 60vh; /* Malo niži hero na telefonu da bi sadržaj brže došao do izražaja */
@@ -421,7 +404,49 @@ footer {
 }
 
 
+/* Prvo moramo definisati glavnu sekciju */
+.section-with-logo {
+    position: relative; /* Neophodno za pseudo-element */
+    overflow: hidden;    /* Da logo ne izlazi van okvira sekcije */
+    padding: 100px 0;    /* Malo više prostora gore/dole da bi se logo video */
+    background-color: #ffffff; /* Ili bilo koja tvoja svetla boja pozadine */
+}
 
+/* Pravimo sloj za logo */
+.section-with-logo::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    
+    /* Putanja do tvog logotipa */
+    background-image: url('Logo-rational-komerc.png');
+    background-repeat: no-repeat;
+    background-position: center center; /* Centriramo i horizontalno i vertikalno */
+    
+    /* Podesi veličinu. 70%-80% širine sekcije je obično dobro */
+    background-size: 70%; 
+    
+    /* KLJUČ: Ekstremno bleda providnost (0.02 - 0.05) */
+    opacity: 0.03; 
+    
+    z-index: 1; /* Logo ide u pozadinski sloj */
+    pointer-events: none; /* Korisnik ne može da klikne na logo */
+}
+
+/* Osiguravamo da sav sadržaj unutar te sekcije stoji ISPRED logotipa */
+.section-with-logo .services-container {
+    position: relative;
+    z-index: 2; /* Veći z-index od logotipa */
+}
+@media (max-width: 768px) {
+    .section-with-logo::before {
+        background-size: 90%; /* Povećavamo % na mobilnom jer je ekran uzak, da bi se video */
+        opacity: 0.02; /* Još manje providno jer je bliže tekstu */
+    }
+}
     </style>
 </head>
 <body>
@@ -492,7 +517,7 @@ footer {
     <div class="badge reveal-left"><div class="badge-icon">🚚</div><span>BRZA ISPORUKA  </span></div>
 </section>
 
-<main class="products-container">
+<main class="products-container"; class="section-with-logo">
     <h2 class="row-title ">PVC Sistemi</h2>
 <div class="product-row">
     <section class="services">
