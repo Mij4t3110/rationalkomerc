@@ -46,10 +46,18 @@
 
         /* --- HERO ZA ALU PROZORE --- */
         .product-hero {
-            height: 60vh;
-            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('LINK_DO_SLIKE_ALU_PROZORA');
-            background-size: cover; background-position: center;
-            display: flex; align-items: center; justify-content: center; text-align: center; color: white; padding-top: 80px;
+            position: relative;
+    height: 80vh; /* Zauzima 80% visine ekrana korisnika */
+    min-height: 500px;
+    background-image: url('slika-vrata.jpeg'); /* Putanja do tvoje slike */
+    background-size: cover;     /* GLAVNA STVAR: Slika popunjava prostor bez razvlačenja */
+    background-position: center; /* Slika je uvek centrirana */
+    background-attachment: scroll; /* Opciono: daje blagi "parallax" efekat dok skroluješ */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-align: center;
         }
         .hero-content h1 { font-size: 3rem; text-transform: uppercase; letter-spacing: 2px; }
 
