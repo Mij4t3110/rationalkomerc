@@ -300,6 +300,7 @@ footer {
 .service-card {
     background: #fff;
     border-radius: 12px;
+    height: 100%;
     overflow: hidden; /* Da slika ne izlazi iz zaobljenih ivica */
     text-decoration: none; /* Brišemo ono plavo podvlačenje */
     color: #333; /* Boja teksta */
@@ -329,6 +330,22 @@ footer {
 
 .service-info {
     padding: 25px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; /* Tera ovaj deo da popuni sav prazan prostor u kartici */
+}
+
+.service-info p {
+    flex-grow: 1; /* Ako želiš da i sam pasus popuni prostor i gurne dugme dole */
+    margin-bottom: 20px;
+}
+
+.fake-btn {
+    margin-top: auto; /* Sigurnosni dodatak koji dugme uvek drži na dnu */
+    display: inline-block;
+    color: var(--accent);
+    font-weight: 700;
+    text-transform: uppercase;
 }
 
 /* Stil za onaj "Saznaj više" koji je sad samo ukras */
