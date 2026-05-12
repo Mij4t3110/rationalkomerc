@@ -288,66 +288,60 @@ footer {
 }
 
 
-/* Kontejner za sve kartice */
+/* 1. Glavni kontejner koji drži sve */
 .services-container {
-    display: grid;
+    display: grid !important;
+    /* Pravi kolone koje se same prilagođavaju */
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 30px;
     padding: 50px 5%;
-    /* Dodajemo ovo da osiguramo rastezanje */
-    align-items: stretch; 
+    /* Ovo je ključ: tera sve članove grida da budu iste visine u redu */
+    align-items: stretch !important; 
 }
 
-/* Stil same kartice (koja je sada link) */
+/* 2. Sama kartica (tvoj <a> tag) */
 .service-card {
-    display: flex;          /* Pravimo flexbox od same kartice */
-    flex-direction: column; /* Ređamo sliku i info jedno ispod drugog */
-    height: 100%;           /* Ključna linija: uzima punu visinu grida */
-    background: #fff;
+    display: flex !important;
+    flex-direction: column !important;
+    /* Kartica mora da popuni visinu koju joj je GRID odredio */
+    height: 100% !important; 
+    background: #ffffff;
     border-radius: 12px;
     text-decoration: none;
     color: #333;
-    transition: all 0.4s ease;
     box-shadow: 0 5px 15px rgba(0,0,0,0.05);
     overflow: hidden;
+    transition: transform 0.3s ease;
 }
 
-/* HOVER EFEKAT - Ovde pravimo "Premium" razliku */
-.service-card:hover {
-    transform: translateY(-10px); /* Kartica se malo podigne */
-    box-shadow: 0 15px 35px rgba(0,0,0,0.15); /* Senka postane dublja */
-    border-color: var(--accent); /* Ako imaš definisanu boju, npr. zlatnu */
-}
-
+/* 3. Slika (da bi bila fiksne visine) */
 .service-image img {
     width: 100%;
-    height: 200px;
-    object-fit: cover; /* Da se slika ne razvlači, već da popuni prostor */
-    transition: 0.5s;
+    height: 200px; /* Sve slike će biti iste visine */
+    object-fit: cover;
 }
 
-.service-card:hover .service-image img {
-    transform: scale(1.05); /* Slika se blago uveća kad pređeš mišem */
-}
-
+/* 4. Tekstualni deo - MAGIJA JE OVDE */
 .service-info {
     padding: 25px;
-    display: flex;
-    flex-direction: column;
-    flex: 1 0 auto; /* Ovo kaže: "Rasti koliko god možeš da popuniš karticu" */
+    display: flex !important;
+    flex-direction: column !important;
+    /* Ovaj deo "jede" sav preostali prostor u kartici */
+    flex-grow: 1 !important; 
 }
 
 .service-info p {
-    flex-grow: 1; /* Tera pasus da zauzme sav slobodan prostor */
+    /* Pasus se širi i gura dugme na dno */
+    flex-grow: 1 !important;
     margin-bottom: 20px;
+    line-height: 1.5;
 }
 
 .fake-btn {
-    margin-top: auto; /* Sigurnosni dodatak koji dugme uvek drži na dnu */
-    display: inline-block;
+    /* Dugme je sada uvek zakucano za dno info dela */
+    margin-top: auto !important; 
+    font-weight: bold;
     color: var(--accent);
-    font-weight: 700;
-    text-transform: uppercase;
 }
 
 
@@ -444,7 +438,7 @@ footer {
 
         
 
-    
+    </div>
 </section>
     <section class="services">
     <div class="services-container">
@@ -463,7 +457,7 @@ footer {
 
         
 
-    
+    </div>
 </section>
         <section class="services">
     <div class="services-container">
@@ -482,7 +476,7 @@ footer {
 
         
 
-    
+    </div>
 </section>
         <section class="services">
     <div class="services-container">
@@ -501,7 +495,7 @@ footer {
 
         
 
-    
+    </div>
 </section>
         
         
