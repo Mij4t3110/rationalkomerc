@@ -45,13 +45,39 @@
         .lang-list li a { padding: 10px; display: block; text-decoration: none; color: var(--text-dark); }
 
         /* --- HERO (ISTI KAO NA PROIZVODIMA) --- */
+        /* --- HERO ZA SPECIFIČNU STRANU --- */
         .product-hero {
-            height: 60vh;
-            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('LINK_DO_SLIKE_KONTAKT');
-            background-size: cover; background-position: center;
-            display: flex; align-items: center; justify-content: center; text-align: center; color: white; padding-top: 80px;
+            position: relative;
+    height: 80vh; /* Zauzima 80% visine ekrana korisnika */
+    min-height: 500px;
+    background-image: url('slika-vr.jpeg'); /* Putanja do tvoje slike */
+    background-size: cover;     /* GLAVNA STVAR: Slika popunjava prostor bez razvlačenja */
+    background-position: center; /* Slika je uvek centrirana */
+    background-attachment: scroll; /* Opciono: daje blagi "parallax" efekat dok skroluješ */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-align: center;
         }
+        /* Tamni sloj preko slike da bi se tekst bolje video */
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4); /* Podesi zadnji broj za jaču ili slabiju tamu */
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2; /* Postavlja tekst iznad overlay-a */
+    padding: 0 20px;
+}
         .hero-content h1 { font-size: 3rem; text-transform: uppercase; letter-spacing: 2px; }
+
 
         /* --- SADRŽAJ (ISTI GRID KAO NA ALU STRANICAMA) --- */
         .main-content { padding: 80px 10%; }
@@ -360,6 +386,7 @@ footer {
 
     <!-- HERO -->
     <section class="product-hero">
+        <div class="hero-overlay"></div> <!-- Ovo dodajemo za bolju čitljivost teksta -->
         <div class="hero-content">
             <h1 class="reveal-left">Kontaktirajte Nas</h1>
             <p class="reveal-left">Stojimo vam na raspolaganju za sva pitanja i procene projekata.</p>
