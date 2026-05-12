@@ -175,10 +175,8 @@
 
 /* Opciono: Smanji logo malo više na mobilnom uređaju */
 @media (max-width: 1024px) {
-    /* 1. Sklanjanje logoa iz navigacije (header-a) */
-    /* Zamenite '.nav-logo' tačnim nazivom vaše klase za logo u headeru */
-    .nav-logo {
-        display: none !important;
+    .logo img {
+        height: 40px; 
     }
 }
 
@@ -296,13 +294,9 @@ footer {
 
 /* Centriranje logotipa na mobilnom uređaju */
 @media (max-width: 768px) {
-    
-    .footer-logo img {
-        width: 300px;      /* Ovde podesi širinu koja ti najbolje izgleda */
-        max-width: 80%;    /* Da logo ne bi bio širi od samog ekrana telefona */
-        height: auto;      /* Čuva proporcije da se logo ne izobliči */
-        margin: 0 auto;    /* Centrira ga ako je footer postavljen kao flex */
-        display: block;
+    .footer-logo-img {
+        height: 50px;
+        margin: 0 auto 20px; /* Centira logo ako je tekst ispod njega centriran */
     }
     
     .footer-col {
