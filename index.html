@@ -338,6 +338,11 @@ footer {
 .service-info p {
     flex-grow: 1; /* Ako želiš da i sam pasus popuni prostor i gurne dugme dole */
     margin-bottom: 20px;
+    display: -webkit-box;
+    -webkit-line-clamp: 3; /* Ograničava tekst na tačno 3 reda */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    /* Ako ima više teksta, staviće tri tačke na kraju (...) */
 }
 
 .fake-btn {
@@ -348,15 +353,8 @@ footer {
     text-transform: uppercase;
 }
 
-/* Stil za onaj "Saznaj više" koji je sad samo ukras */
-.fake-btn {
-    display: inline-block;
-    margin-top: 15px;
-    color: var(--accent);
-    font-weight: 700;
-    font-size: 0.9rem;
-    text-transform: uppercase;
-}
+
+
 
     </style>
 </head>
