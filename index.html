@@ -135,6 +135,23 @@
         /* Animacije */
         .reveal-left { opacity: 0; transform: translateX(-50px); transition: 0.8s all ease; }
         .reveal-left.active { opacity: 1; transform: translateX(0); }
+        /* Početno stanje kartice - nevidljiva i pomerena levo */
+.reveal-card {
+    opacity: 0;
+    transform: translateX(-50px);
+    transition: all 0.8s ease-out;
+}
+
+/* Stanje kada kartica postane vidljiva (kad skroluješ do nje) */
+.reveal-card.active {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Ako želiš da kartice dolaze jedna za drugom (stepenasto), dodaj mali delay */
+.reveal-card:nth-child(2) { transition-delay: 0.2s; }
+.reveal-card:nth-child(3) { transition-delay: 0.4s; }
+.reveal-card:nth-child(4) { transition-delay: 0.6s; }
 
         /* --- FOOTER --- */
         footer { background: var(--primary-dark); color: white; padding: 80px 5% 40px; }
@@ -426,7 +443,7 @@ footer {
         <div class="services-container">
             
             <!-- 1. KARTICA -->
-            <a href="pvc-prozori.html" class="service-card">
+            <a href="pvc-prozori.html" class="service-card" ;class="service-card reveal-card">
                 <div class="service-image">
                     <img src="Logo-rational-komerc.png" alt="">
                 </div>
