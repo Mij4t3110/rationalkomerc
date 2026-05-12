@@ -45,7 +45,7 @@
         .lang-dropdown:hover .lang-list { display: block; }
         .lang-list li a { padding: 10px; display: block; text-decoration: none; color: var(--text-dark); }
 
-        /* --- MOBILNA NAVIGACIJA (TAČNO KAO NA PVC STRANI) --- */
+        /* --- MOBILNA NAVIGACIJA  --- */
         .menu-toggle { display: none; }
 
         @media (max-width: 1024px) {
@@ -107,6 +107,24 @@
     position: relative;
     z-index: 2; /* Postavlja tekst iznad overlay-a */
     padding: 0 20px;
+}
+/* Kreiramo "sloj" za logo u pozadini */
+.hero::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Putanja do tvog logotipa */
+    background-image: url('Logo-rational-komerc.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 40%; /* Podesi koliko veliki želiš da bude logo */
+    
+    /* KLJUČNI DEO: Providnost */
+    opacity: 0.05; /* 0.05 znači da je skoro providan (kao vodeni žig) */
+    z-index: 1;    /* Ide iza teksta */
 }
 @media (max-width: 768px) {
     .hero {
