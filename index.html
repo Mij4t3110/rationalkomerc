@@ -593,6 +593,7 @@ footer {
         e.stopPropagation();
         this.classList.toggle('open-lang');
     });
+    window.addEventListener('click', () => { if(langDrop) langDrop.classList.remove('open-lang'); });
     window.addEventListener('scroll', reveal);
 
 function reveal() {
