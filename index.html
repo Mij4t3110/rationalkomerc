@@ -380,7 +380,27 @@ footer {
 .service-card:nth-child(3) { transition-delay: 0.5s; }
 /* Četvrta kartica */
 .service-card:nth-child(4) { transition-delay: 0.7s; }
+/* Peta kartica */
 .service-card:nth-child(5) { transition-delay: 1s; }
+/* Media query za telefone ) */
+@media (max-width: 1024px) {
+    .service-card {
+        /* Skraćujemo trajanje sa 0.8s na 0.4s za brži pokret */
+        transition: all 0.4s ease-out !important;
+        
+        /* Smanjujemo udaljenost sa koje uleću da bi brže stigli na nulu */
+        transform: translateX(-30px); 
+    }
+
+    /* Resetujemo ili drastično smanjujemo delay (kašnjenje) za mobilni */
+    .service-card:nth-child(1),
+    .service-card:nth-child(2),
+    .service-card:nth-child(3),
+    .service-card:nth-child(4),
+    .service-card:nth-child(5) {
+        transition-delay: 0.1s !important; /* Sve uleću skoro istovremeno ili sa minimalnim razmakom */
+    }
+}
 
 
 
