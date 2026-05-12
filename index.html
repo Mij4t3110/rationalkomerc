@@ -294,20 +294,22 @@ footer {
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 30px;
     padding: 50px 5%;
+    /* Dodajemo ovo da osiguramo rastezanje */
+    align-items: stretch; 
 }
 
 /* Stil same kartice (koja je sada link) */
 .service-card {
+    display: flex;          /* Pravimo flexbox od same kartice */
+    flex-direction: column; /* Ređamo sliku i info jedno ispod drugog */
+    height: 100%;           /* Ključna linija: uzima punu visinu grida */
     background: #fff;
     border-radius: 12px;
-    height: 100%;
-    overflow: hidden; /* Da slika ne izlazi iz zaobljenih ivica */
-    text-decoration: none; /* Brišemo ono plavo podvlačenje */
-    color: #333; /* Boja teksta */
-    transition: all 0.4s ease; /* Glatka animacija za sve promene */
-    box-shadow: 0 5px 15px rgba(0,0,0,0.05); /* Blaga senka */
-    display: flex;
-    flex-direction: column;
+    text-decoration: none;
+    color: #333;
+    transition: all 0.4s ease;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    overflow: hidden;
 }
 
 /* HOVER EFEKAT - Ovde pravimo "Premium" razliku */
@@ -332,17 +334,12 @@ footer {
     padding: 25px;
     display: flex;
     flex-direction: column;
-    flex-grow: 1; /* Tera ovaj deo da popuni sav prazan prostor u kartici */
+    flex: 1 0 auto; /* Ovo kaže: "Rasti koliko god možeš da popuniš karticu" */
 }
 
 .service-info p {
-    flex-grow: 1; /* Ako želiš da i sam pasus popuni prostor i gurne dugme dole */
+    flex-grow: 1; /* Tera pasus da zauzme sav slobodan prostor */
     margin-bottom: 20px;
-    display: -webkit-box;
-    -webkit-line-clamp: 3; /* Ograničava tekst na tačno 3 reda */
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    /* Ako ima više teksta, staviće tri tačke na kraju (...) */
 }
 
 .fake-btn {
@@ -459,7 +456,7 @@ footer {
             </div>
             <div class="service-info">
                 <h3>PVC Balkonska Vrata</h3>
-                <p>Vrhunski dizajn i čvrstina.                                           </p>
+                <p>Vrhunski dizajn i čvrstina.</p>
                 <span class="fake-btn"></span>
             </div>
         </a>
@@ -478,7 +475,7 @@ footer {
             </div>
             <div class="service-info">
                 <h3>PVC  Vrata</h3>
-                <p>Sigurnost na prvom mestu.                                                 </p>
+                <p>Sigurnost na prvom mestu.</p>
                 <span class="fake-btn"></span>
             </div>
         </a>
