@@ -593,7 +593,21 @@ footer {
         e.stopPropagation();
         this.classList.toggle('open-lang');
     });
-    window.addEventListener('click', () => { if(langDrop) langDrop.classList.remove('open-lang'); });
+    window.addEventListener('scroll', reveal);
+
+function reveal() {
+    var reveals = document.querySelectorAll('.reveal-card');
+
+    for (var i = 0; i < reveals.length; i++) {
+        var windowHeight = window.innerHeight;
+        var revealTop = reveals[i].getBoundingClientRect().top;
+        var revealPoint = 150; // Koliko piksela pre nego što se pojavi
+
+        if (revealTop < windowHeight - revealPoint) {
+            reveals[i].classList.add('active');
+        }
+    }
+}
 </script>
 </body>
 </html>
