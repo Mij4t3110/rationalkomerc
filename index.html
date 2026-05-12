@@ -430,7 +430,7 @@ footer {
     background-size: 70%; 
     
     /* KLJUČ: Ekstremno bleda providnost (0.02 - 0.05) */
-    opacity: 1; 
+    opacity: 0.5; 
     
     z-index: 1; /* Logo ide u pozadinski sloj */
     pointer-events: none; /* Korisnik ne može da klikne na logo */
@@ -444,7 +444,7 @@ footer {
 @media (max-width: 768px) {
     .section-with-logo::before {
         background-size: 90%; /* Povećavamo % na mobilnom jer je ekran uzak, da bi se video */
-        opacity: 0.02; /* Još manje providno jer je bliže tekstu */
+        opacity: 1; /* Još manje providno jer je bliže tekstu */
     }
 }
     </style>
