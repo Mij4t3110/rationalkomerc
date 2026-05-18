@@ -346,10 +346,13 @@ footer {
 
 /* 3. Slika (da bi bila fiksne visine) */
 .service-image img {
+    
     width: 100%;
-    height: auto; /* Sve slike će biti iste visine */
-    object-fit: fill;
+    height: 250px;       /* Zadržavaš tvoju tačnu visinu kutije */
+    object-fit: contain; /* Prikazuje CELU sliku, garantovano bez sečenja */
+    background-color: #f9f9f9; /* Dodaje blagu sivu pozadinu tamo gde se slika završi */
 }
+
 
 /* 4. Tekstualni deo - MAGIJA JE OVDE */
 .service-info {
@@ -571,7 +574,7 @@ footer {
             <!-- 1. KARTICA -->
             <a href="pvc-prozori.html" class="service-card reveal-card">
                 <div class="service-image">
-                    <img src="Logo-rational-komerc.png" alt="">
+                    <img src="slika-vrata.jpeg" alt="">
                 </div>
                 <div class="service-info">
                     <h3>PVC Prozori</h3>
