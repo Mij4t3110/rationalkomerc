@@ -447,6 +447,49 @@ footer {
         opacity: 1; /* Još manje providno jer je bliže tekstu */
     }
 }
+
+/* Kontejner koji centrira dugme i pravi razmak */
+.cta-gallery-container {
+    text-align: center;
+    padding: 60px 20px; /* Veliki razmak gore i dole za "profi" izgled */
+    background-color: transparent; /* Prilagođava se pozadini main tag-a */
+}
+
+/* Stil za veliko dugme */
+.btn-gallery {
+    display: inline-block;
+    padding: 16px 40px;
+    font-size: 18px;
+    font-weight: 600;
+    color: #ffffff !important; /* Bela boja teksta */
+    background-color: #0056b3; /* OVDE STAVI TVOJU BOJU SAJTA */
+    text-decoration: none;
+    border-radius: 4px; /* Blago zaobljene ivice */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease-in-out;
+}
+
+/* Efekat kada se pređe mišem (Hover) na desktopu */
+.btn-gallery:hover {
+    background-color: #003d80; /* Malo tamnija nijansa tvoje boje na hover */
+    transform: translateY(-3px); /* Dugme se suptilno podigne */
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* PRILAGOĐAVANJE ZA TELEFONE */
+@media (max-width: 768px) {
+    .cta-gallery-container {
+        padding: 40px 15px; /* Nešto manji razmak na telefonima */
+    }
+    
+    .btn-gallery {
+        display: block; /* Dugme se širi kako bi palac lakše kliknuo */
+        max-width: 280px; /* Ali mu ograničavamo širinu da ne bude preogromno */
+        margin: 0 auto; /* Centrira ga na ekranu */
+        font-size: 16px;
+        padding: 14px 20px;
+    }
+}
     </style>
 </head>
 <body>
@@ -703,6 +746,18 @@ footer {
         </div> <!-- KRAJ KONTEJNERA -->
     </section>
 </div>
+<!-- ... tvoj prethodni sadržaj unutar main-a ... -->
+
+    <!-- SEKCIJA ZA DUGME PRE FOOTERA -->
+    <div class="cta-gallery-container">
+        <a href="galerija.html" class="btn-gallery">Neki od naših radova</a>
+    </div>
+
+</main> <!-- Ovde se završava tvoj main -->
+
+<footer>
+    <!-- Ovde počinje tvoj footer -->
+</footer>
 </main>
 
     
