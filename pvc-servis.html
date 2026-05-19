@@ -273,6 +273,46 @@ footer {
         text-align: center; /* Opciono: ako želiš da sve u futeru bude na sredini na telefonu */
     }
 }
+
+/* Kutija sa tekstom koja dobija sopstveni skrol */
+.tekst-skrol-kutija {
+    max-height: 300px;       /* Maksimalna visina kutije (promeni po želji) */
+    overflow-y: auto;        /* Automatski dodaje vertikalni skrol samo ako tekst pređe 300px */
+    padding: 20px;
+    background-color: #f9f9f9; /* Blaga pozadina da se kutija razlikuje od ostatka sajta */
+    border: 1px solid #e0e0e0; /* Suptilna ivica oko teksta */
+    border-radius: 6px;      /* Blago zaobljene ivice */
+    
+    /* Lepši izgled skrola za moderne pretraživače */
+    scrollbar-width: thin;   /* Stanjena linija skrola za Firefox */
+}
+
+/* Stilizovanje skrol trake za Chrome, Edge i Safari da izgleda profi */
+.tekst-skrol-kutija::-webkit-scrollbar {
+    width: 6px;              /* Širina skrol trake */
+}
+
+.tekst-skrol-kutija::-webkit-scrollbar-track {
+    background: #f1f1f1;     /* Boja pozadine trake */
+    border-radius: 6px;
+}
+
+.tekst-skrol-kutija::-webkit-scrollbar-thumb {
+    background: #cccccc;     /* Boja klizača */
+    border-radius: 6px;
+}
+
+.tekst-skrol-kutija::-webkit-scrollbar-thumb:hover {
+    background: #999999;     /* Boja klizača kada se pređe mišem */
+}
+
+/* PRILAGOĐAVANJE ZA TELEFONE (ispod 768px) */
+@media (max-width: 768px) {
+    .tekst-skrol-kutija {
+        max-height: 220px;   /* Na telefonu smanjujemo visinu da korisnik lakše preskoči kutiju */
+        padding: 15px;
+    }
+}
     </style>
 </head>
 <body>
@@ -340,11 +380,18 @@ footer {
 
     <!-- GLAVNI SADRŽAJ -->
     <main class="main-content">
-        <div class="description-text reveal-left">
-            <h2>Brza i Efikasna Tehnička Podrška</h2>
-            <p>Čak i najkvalitetniji PVC sistemi zahtevaju povremeno podešavanje. Bilo da se radi o otežanom zatvaranju, promaji ili istrošenim okovima, naš tim servisera koristi <b>isključivo originalne delove</b> kako bi vašoj stolariji vratili fabričko stanje.</p>
-            <p>Redovan servis sprečava veće kvarove i osigurava da termoizolaciona svojstva prozora i vrata ostanu na maksimalnom nivou godinama nakon ugradnje.</p>
-        </div>
+        <div class="pvc-vrata-kontejner">
+    <h2>Servis PVC stolarije</h2>
+    
+    <!-- KONTEJNER KOJI ĆE IMATI SVOJ SKROL -->
+    <div class="tekst-skrol-kutija">
+        <p>Ovde ide tvoj prvi dugačak pasus teksta o profilima, ojačanjima i sigurnosnim bravama...</p>
+        <p>Ovde ide drugi dugačak pasus o termoizolaciji, pragovima i staklima...</p>
+        <p>Slobodno ubaci koliko god teksta želiš, sve što je preko zadate visine će se skrolovati unutar ovog okvira...</p>
+        <p>Još teksta o ugradnji, garanciji i održavanju PVC ulaznih vrata...</p>
+    </div>
+    
+</div>
 
         <div class="specs-container">
             <div class="spec-item reveal-left">
