@@ -273,6 +273,47 @@ footer {
         text-align: center; /* Opciono: ako želiš da sve u futeru bude na sredini na telefonu */
     }
 }
+
+
+/* Kutija sa tekstom koja dobija sopstveni skrol */
+.tekst-skrol-kutija {
+    max-height: 300px;       /* Maksimalna visina kutije (promeni po želji) */
+    overflow-y: auto;        /* Automatski dodaje vertikalni skrol samo ako tekst pređe 300px */
+    padding: 20px;
+    background-color: #f9f9f9; /* Blaga pozadina da se kutija razlikuje od ostatka sajta */
+    border: 1px solid #e0e0e0; /* Suptilna ivica oko teksta */
+    border-radius: 6px;      /* Blago zaobljene ivice */
+    
+    /* Lepši izgled skrola za moderne pretraživače */
+    scrollbar-width: thin;   /* Stanjena linija skrola za Firefox */
+}
+
+/* Stilizovanje skrol trake za Chrome, Edge i Safari da izgleda profi */
+.tekst-skrol-kutija::-webkit-scrollbar {
+    width: 6px;              /* Širina skrol trake */
+}
+
+.tekst-skrol-kutija::-webkit-scrollbar-track {
+    background: #f1f1f1;     /* Boja pozadine trake */
+    border-radius: 6px;
+}
+
+.tekst-skrol-kutija::-webkit-scrollbar-thumb {
+    background: #cccccc;     /* Boja klizača */
+    border-radius: 6px;
+}
+
+.tekst-skrol-kutija::-webkit-scrollbar-thumb:hover {
+    background: #999999;     /* Boja klizača kada se pređe mišem */
+}
+
+/* PRILAGOĐAVANJE ZA TELEFONE (ispod 768px) */
+@media (max-width: 768px) {
+    .tekst-skrol-kutija {
+        max-height: 220px;   /* Na telefonu smanjujemo visinu da korisnik lakše preskoči kutiju */
+        padding: 15px;
+    }
+}
     </style>
 </head>
 <body>
@@ -340,29 +381,18 @@ footer {
 
     <!-- GLAVNI SADRŽAJ -->
     <main class="main-content">
-        <div class="description-text reveal-left">
-            <h2>Sigurnost i estetika ulaza</h2>
-            <p>Vaša ulazna vrata su prvi utisak koji vaš dom ostavlja na goste, ali su i ključna barijera koja štiti vašu privatnost i energetsku efikasnost. Naša PVC ulazna vrata kombinuju savremenu tehnologiju izrade sa vrhunskom estetikom, pružajući idealno rešenje za stambene kuće i poslovne objekte.
-
-Zašto izabrati naša PVC ulazna vrata?
-
-Beskompromisna sigurnost: Sigurnosni okovi i ojačani PVC profili čine naša vrata izuzetno otpornim na provale. Pružite svojoj porodici mir i sigurnost koju zaslužuju.
-
-Energetska efikasnost i izolacija: Zahvaljujući naprednim sistemima zaptivanja i višekomornim profilima, naša vrata pružaju vrhunsku termo i zvučnu izolaciju. Smanjite troškove grejanja zimi i hlađenja leti uz minimalan gubitak energije.
-
-Otpornost na sve vremenske uslove: Bez obzira na kišu, sneg ili jako sunce, PVC vrata visokog kvaliteta ne menjaju oblik, ne korodiraju i ne zahtevaju skupo održavanje ili farbanje.
-
-Dizajn prema vašoj želji: Od klasičnih modela do modernih linija sa dekorativnim panelima – nudimo širok izbor boja i dezena koji se savršeno uklapaju u arhitekturu vašeg objekta.
-
-Dugotrajnost i lako održavanje: Investicija u PVC vrata je dugoročna. Povremeno brisanje vlažnom krpom je sasvim dovoljno da vaša vrata izgledaju besprekorno godinama.
-
-Profesionalna ugradnja PVC vrata
-
-Kvalitetna vrata su efikasna samo ako su pravilno ugrađena. Naš tim pruža uslugu montaže PVC ulaznih vrata po svim standardima struke, obezbeđujući savršeno dihtovanje i dugovečnost svakog elementa.
-
-Tražite pouzdana ulazna vrata koja spajaju funkcionalnost i dizajn?
-Kontaktirajte nas za besplatnu konsultaciju i procenu. Pomoći ćemo vam da izaberete idealan model koji će podići nivo sigurnosti i estetike vašeg doma.</p>
-        </div>
+        <<div class="pvc-vrata-kontejner">
+    <h2>PVC Ulazna Vrata - Tehničke Informacije</h2>
+    
+    <!-- KONTEJNER KOJI ĆE IMATI SVOJ SKROL -->
+    <div class="tekst-skrol-kutija">
+        <p>Ovde ide tvoj prvi dugačak pasus teksta o profilima, ojačanjima i sigurnosnim bravama...</p>
+        <p>Ovde ide drugi dugačak pasus o termoizolaciji, pragovima i staklima...</p>
+        <p>Slobodno ubaci koliko god teksta želiš, sve što je preko zadate visine će se skrolovati unutar ovog okvira...</p>
+        <p>Još teksta o ugradnji, garanciji i održavanju PVC ulaznih vrata...</p>
+    </div>
+    
+</div>
 
         <div class="specs-container">
             <div class="spec-item reveal-left">
