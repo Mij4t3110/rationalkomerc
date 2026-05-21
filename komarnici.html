@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ALU Ulazna Vrata | Premium Sigurnost i Dizajn</title>
+    <style>
+        :root {
+            --primary-dark: #2c3e50;
+            --accent: #c5a059;
+            --white: #ffffff;
+            --light-gray: #f4f7f6;
+            --text-dark: #1a1a1a;
+            --transition: all 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Arial, sans-serif; }
+        body { background-color: var(--white); color: var(--text-dark); overflow-x: hidden; line-height: 1.7; }
+
+        /* --- NAVIGACIJA (SADA IDENTIČNA SVUDA) --- */
+        header {
+            position: fixed; top: 0; width: 100%; background: rgba(255, 255, 255, 0.98);
+            padding: 5px 5%; display: flex; justify-content: space-between;
+            align-items: center; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        .logo h2 { color: var(--primary-dark); font-weight: 800; }
+        nav { display: flex; align-items: center; gap: 30px; }
+        .nav-links { display: flex; list-style: none; gap: 25px; }
+        .nav-links a { text-decoration: none; color: var(--primary-dark); font-weight: 600; text-transform: uppercase; font-size: 13px; transition: 0.3s; }
+        .nav-links a:hover { color: var(--accent); }
+        
+        .dropdown { position: relative; }
+        .dropdown-content {
+            display: none; position: absolute; background-color: var(--white);
+            min-width: 200px; box-shadow: 0px 8px 16px rgba(0,0,0,0.1);
+            z-index: 1001; list-style: none; top: 100%; left: 0; border-top: 3px solid var(--accent);
+        }
+        .dropdown:hover .dropdown-content { display: block; }
+        .dropdown-content li a { padding: 12px 16px; display: block; text-transform: none; border-bottom: 1px solid #f0f0f0;  }
+        .dropdown-content li a:hover { background: var(--light-gray); color: var(--accent) !important;  }
+
+        .lang-dropdown { position: relative; cursor: pointer; padding: 5px 12px; border: 1px solid #eee; background: var(--light-gray); font-weight: bold; font-size: 14px; }
+        .lang-list { display: none; position: absolute; right: 0; background: white; box-shadow: 0 5px 15px rgba(0,0,0,0.1); list-style: none; min-width: 100px; }
+        .lang-dropdown:hover .lang-list { display: block; }
+        .lang-list li a { padding: 10px; display: block; text-decoration: none; color: var(--text-dark); }
+
+        /* --- HERO ZA SPECIFIČNU STRANU --- */
+        .product-hero {
+            position: relative;
+    height: 80vh; /* Zauzima 80% visine ekrana korisnika */
+    min-height: 500px;
+    background-image: url('Pocetna-slika.png'); /* Putanja do tvoje slike */
+    background-size: cover;     /* GLAVNA STVAR: Slika popunjava prostor bez razvlačenja */
+    background-position: center; /* Slika je uvek centrirana */
+    background-attachment: scroll; /* Opciono: daje blagi "parallax" efekat dok skroluješ */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-align: center;
+        }
+        /* Tamni sloj preko slike da bi se tekst bolje video */
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4); /* Podesi zadnji broj za jaču ili slabiju tamu */
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2; /* Postavlja tekst iznad overlay-a */
+    padding: 0 20px;
+}
+        .hero-content h1 { font-size: 3rem; text-transform: uppercase; letter-spacing: 2px; }
+
+
+        /* --- SADRŽAJ --- */
+        .main-content { padding: 80px 10%; }
+        .description-text h2 { color: var(--primary-dark); font-size: 2.2rem; margin-bottom: 20px; border-bottom: 3px solid var(--accent); display: inline-block; }
+        .description-text p { font-size: 1.1rem; color: #444; margin-bottom: 15px; }
+
+        .specs-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin-top: 40px; }
+        .spec-item { padding: 30px; background: var(--light-gray); border-left: 5px solid var(--accent); transition: 0.3s; }
+        .spec-item:hover { transform: scale(1.02); background: #ebf0ef; }
+        .spec-item h3 { color: var(--primary-dark); margin-bottom: 10px; text-transform: uppercase; font-size: 1.1rem; }
+
+        /* --- ANIMACIJA --- */
+        .reveal-left { opacity: 0; transform: translateX(-80px); transition: var(--transition); }
+        .reveal-left.active { opacity: 1; transform: translateX(0); }
+
+        /* --- FOOTER --- */
+        footer { background: var(--primary-dark); color: white; padding: 100px 5% 50px; margin-top: 80px; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 50px; margin-bottom: 60px; }
+        .btn-cta { background: var(--accent); color: white; padding: 20px 40px; text-decoration: none; font-weight: 800; display: inline-block; transition: 0.3s; }
+        .btn-cta:hover { background: #b38f48; }
+
+        /* --- MOBILNA NAVIGACIJA (TAČNO KAO NA PVC STRANI) --- */
+        .menu-toggle { display: none; }
+
+        @media (max-width: 768px) {
+            .menu-toggle { display: block; cursor: pointer; z-index: 1100; }
+            .menu-toggle span { display: block; width: 30px; height: 3px; background: var(--primary-dark); margin: 6px 0; transition: 0.4s; }
+            
+            .menu-toggle.is-active span:nth-child(1) { transform: rotate(-45deg) translate(-5px, 6px); }
+            .menu-toggle.is-active span:nth-child(2) { opacity: 0; }
+            .menu-toggle.is-active span:nth-child(3) { transform: rotate(45deg) translate(-5px, -6px); }
+
+            nav {
+                position: fixed; top: 0; right: -100%; width: 85%; height: 100vh;
+                background: var(--white); flex-direction: column; align-items: flex-start !important;
+                padding: 100px 40px !important; transition: 0.5s cubic-bezier(0.77,0.2,0.05,1); 
+                box-shadow: -10px 0 30px rgba(0,0,0,0.1); z-index: 1000; overflow-y: auto;
+            }
+            nav.active { right: 0; }
+            .nav-links { flex-direction: column; width: 100%; gap: 5px !important; }
+            .nav-links li { width: 100%; border-bottom: 1px solid #f5f5f5; }
+            .nav-links a { font-size: 17px !important; display: block; padding: 15px 0; width: 100%; }
+
+            .dropdown-content { display: none; position: static; box-shadow: none; padding-left: 20px; background: #fafafa; border-top: none; }
+            .dropdown.open .dropdown-content { display: block; }
+            
+            body.no-scroll { overflow: hidden; }
+            .lang-dropdown { margin-top: 20px; width: 100%; }
+            .lang-dropdown.open-lang .lang-list { display: block !important; position: static; width: 100%; box-shadow: none; border: 1px solid #eee; }
+        }
+
+        /* --- LOGO--- */
+        .logo a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+.logo img {
+    height: 150px; /* Podesi visinu koja ti odgovara */
+    width: auto;  /* Ovo čuva proporcije da se logo ne deformiše */
+    display: block;
+    transition: 0.3s; /* Opciono: da bi se glatko prilagodio ako menjaš veličinu */
+}
+
+/* Opciono: Smanji logo malo više na mobilnom uređaju */
+@media (max-width: 768px) {
+    .logo img {
+        height: 40px; 
+    }
+}
+
+  /* --- FOOTER STIL --- */
+footer {
+    background-color: var(--primary-dark);
+    color: #ecf0f1;
+    padding: 80px 5% 20px;
+    margin-top: 50px;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 40px;
+}
+
+.footer-col h4 {
+    color: var(--accent);
+    margin-bottom: 25px;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    position: relative;
+}
+
+/* Linija ispod naslova u futeru */
+.footer-col h4::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -8px;
+    width: 30px;
+    height: 2px;
+    background: var(--accent);
+}
+
+.footer-col p {
+    font-size: 0.95rem;
+    line-height: 1.8;
+    margin-bottom: 10px;
+    opacity: 0.8;
+}
+
+.footer-col ul {
+    list-style: none;
+}
+
+.footer-col ul li {
+    margin-bottom: 12px;
+}
+
+.footer-col ul li a {
+    color: #ecf0f1;
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: 0.3s;
+    opacity: 0.8;
+}
+
+.footer-col ul li a:hover {
+    color: var(--accent);
+    padding-left: 5px;
+    opacity: 1;
+}
+
+.footer-col a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.footer-logo {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+}
+
+.footer-logo span {
+    color: var(--accent);
+}
+
+.footer-bottom {
+    margin-top: 60px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    text-align: center;
+    font-size: 0.85rem;
+    opacity: 0.6;
+}
+
+/* Mobilna adaptacija */
+@media (max-width: 768px) {
+    footer {
+        padding: 50px 8% 20px;
+        text-align: left;
+    }
+    
+    .footer-col h4 {
+        margin-bottom: 15px;
+    }
+}
+/* Stil za logo u futeru */
+.footer-logo-link {
+    display: inline-block;
+    margin-bottom: 20px;
+}
+
+.footer-logo-img {
+    height: 60px; /* Možeš staviti malo više ili manje nego u headeru */
+    width: auto;
+    display: block;
+    filter: brightness(1.1); /* Opciono: malo posvetli logo ako je futer jako taman */
+}
+
+/* Centriranje logotipa na mobilnom uređaju */
+@media (max-width: 768px) {
+    .footer-logo-img {
+        height: 50px;
+        margin: 0 auto 20px; /* Centira logo ako je tekst ispod njega centriran */
+    }
+    
+    .footer-col {
+        text-align: center; /* Opciono: ako želiš da sve u futeru bude na sredini na telefonu */
+    }
+}
+
+/* Kutija sa tekstom koja dobija sopstveni skrol */
+.tekst-skrol-kutija {
+    max-height: 300px;       /* Maksimalna visina kutije (promeni po želji) */
+    overflow-y: auto;        /* Automatski dodaje vertikalni skrol samo ako tekst pređe 300px */
+    padding: 20px;
+    background-color: #f9f9f9; /* Blaga pozadina da se kutija razlikuje od ostatka sajta */
+    border: 1px solid #e0e0e0; /* Suptilna ivica oko teksta */
+    border-radius: 6px;      /* Blago zaobljene ivice */
+    
+    /* Lepši izgled skrola za moderne pretraživače */
+    scrollbar-width: thin;   /* Stanjena linija skrola za Firefox */
+}
+
+/* Stilizovanje skrol trake za Chrome, Edge i Safari da izgleda profi */
+.tekst-skrol-kutija::-webkit-scrollbar {
+    width: 6px;              /* Širina skrol trake */
+}
+
+.tekst-skrol-kutija::-webkit-scrollbar-track {
+    background: #f1f1f1;     /* Boja pozadine trake */
+    border-radius: 6px;
+}
+
+.tekst-skrol-kutija::-webkit-scrollbar-thumb {
+    background: #cccccc;     /* Boja klizača */
+    border-radius: 6px;
+}
+
+.tekst-skrol-kutija::-webkit-scrollbar-thumb:hover {
+    background: #999999;     /* Boja klizača kada se pređe mišem */
+}
+
+/* PRILAGOĐAVANJE ZA TELEFONE (ispod 768px) */
+@media (max-width: 768px) {
+    .tekst-skrol-kutija {
+        max-height: 220px;   /* Na telefonu smanjujemo visinu da korisnik lakše preskoči kutiju */
+        padding: 15px;
+    }
+}
+    </style>
+</head>
+<body>
+    /* --- NAVIGACIJA --- */
+    <header>
+    <div class="logo">
+    <a href="index.html">
+        <img src="Logo-rational-komerc.png" alt="Premium Stolarija Logo">
+    </a>
+</div>
+    <div class="menu-toggle" id="mobile-menu">
+        <span></span><span></span><span></span>
+    </div>
+
+    <nav id="nav-menu">
+        <ul class="nav-links">
+            <li><a href="index.html">Početna</a></li>
+            <li class="dropdown">
+                <a href="#" class="mobile-drop">PVC Sistemi ▼</a>
+                <ul class="dropdown-content">
+                    <li><a href="pvc-prozori.html">PVC Prozori</a></li>
+                    <li><a href="pvc-balkonska-vrata.html">PVC Balkonska Vrata</a></li>
+                    <li><a href="pvc-vrata.html">PVC Ulazna Vrata</a></li>
+                    <li><a href="pvc-servis.html">Servis PVC</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="#" class="mobile-drop">ALU Sistemi ▼</a>
+                <ul class="dropdown-content">
+                    <li><a href="alu-prozori.html">ALU Prozori</a></li>
+                    <li><a href="alu-balkonska-vrata.html">ALU Balkonska Vrata</a></li>
+                    <li><a href="alu-vrata.html">ALU Ulazna Vrata</a></li>
+                    <li><a href="alu-servis.html">Servis ALU</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="#" class="mobile-drop">Dodatna Oprema ▼</a>
+                <ul class="dropdown-content">
+                    <li><a href="komarnici.html">Komarnici</a></li>
+                    <li><a href="roletne.html">Roletne</a></li>
+                    <li><a href="garazna-vrata.html">Garažna Vrata</a></li>
+                    <li><a href="stakla.html">Stakla</a></li>
+                    <li><a href="pergola.html">Pergola Tende</a></li>
+                </ul>
+            </li>
+            <li><a href="kontakt.html">Kontakt</a></li>
+            <li><a href="galerija.html">Galerija</a></li>
+        </ul>
+        <div class="lang-dropdown">
+            🇷🇸 SR ▼
+            <ul class="lang-list">
+                <li><a href="#">🇺🇸 EN</a></li>
+                <li><a href="#">🇩🇪 DE</a></li>
+            </ul>
+        </div>
+    </nav>
+</header>
+
+    <!-- HERO SEKCIJA -->
+    <section class="product-hero">
+        <div class="hero-overlay"></div> <!-- Ovo dodajemo za bolju čitljivost teksta -->
+        <div class="hero-content">
+            <h1 class="reveal-left">ALU Ulazna Vrata</h1>
+            <p class="reveal-left">Beskompromisna sigurnost i vrhunski dizajn vašeg ulaza</p>
+        </div>
+    </section>
+
+    <!-- GLAVNI SADRŽAJ -->
+    <main class="main-content">
+        <div class="pvc-vrata-kontejner">
+    <h2>ALU Ulazna Vrata</h2>
+    
+    <!-- KONTEJNER KOJI ĆE IMATI SVOJ SKROL -->
+    <div class="tekst-skrol-kutija">
+        <p>Vaša ulazna vrata su mnogo više od samog ulaza – ona su Vaša vizit karta i garant bezbednosti Vaše porodice. 
+            ALU ulazna vrata predstavljaju vrhunac u svetu stolarije, spajajući čvrstinu metala sa neograničenim mogućnostima dizajna.
+             Ako tražite rešenje koje ne samo da izgleda luksuzno već pruža i maksimalan nivo zaštite, aluminijumski sistemi su jedini pravi izbor.</p>
+            <br></br>
+            <p>Zašto su ALU ulazna vrata sinonim za kvalitet?</p>
+        
+        <p><b>Vrhunska zaštita od provala: </b>Aluminijum je izuzetno čvrst i otporan materijal. 
+            Naša vrata opremamo najsavremenijim sigurnosnim okovima sa višetačkovnim zaključavanjem, što ih čini izuzetno teškim za neovlašćeno otvaranje.</p>
+        <p><b>Termička efikasnost (Termoprekid): </b>Moderni ALU profili sa prekinutim termičkim mostom (termoprekidom) eliminišu provodljivost hladnoće. 
+            Uživajte u toplom domu zimi i prijatnom enterijeru leti, uz odličnu zvučnu izolaciju koja blokira spoljašnju buku.</p>
+        <p><b>Dizajn bez ograničenja: </b>Aluminijum dozvoljava izradu vrata po meri, sa dekorativnim panelima, staklenim dodacima ili skrivenim šarkama za minimalistički 
+            "clean" izgled. Dostupna su u svim bojama po RAL karti, kao i u dekorima drveta koji izgledaju verodostojno.</p>
+            <p><b>Jednostavno održavanje: </b>Površine su zaštićene postupkom plastifikacije, 
+                što ih čini otpornim na ogrebotine, UV zračenje i koroziju. Zadržavaju svoj sjaj uz minimalno brisanje vlažnom krpom.</p>
+            <br></br>
+            <p>Profesionalna montaža i siguran ulaz</p>
+            <p><b>ALU ulazna vrata su masivnija i zahtevnija za postavljanje od standardne stolarije. 
+                Naš tim je specijalizovan za ugradnju aluminijumskih ulaznih vrata, gde posebnu pažnju posvećujemo preciznom ankerisanju i izolaciji štoka. 
+                Garantujemo da će Vaša vrata funkcionisati glatko, uz savršeno dihtovanje i maksimalnu sigurnost.</b></p>
+                <p>Tražite ulazna vrata koja spajaju estetiku visoke klase i čvrstinu metala?</p>
+<p>Kontaktirajte nas za besplatnu konsultaciju i procenu. Pomoći ćemo Vam da dizajnirate vrata koja će Vašem domu dati karakter i sigurnost kakvu zaslužuje.</p>
+
+    </div>
+    
+</div>
+
+        <div class="specs-container">
+            <div class="spec-item reveal-left">
+                <h3>Rolo komarnici za prozore/h3>
+                <p>MIdealno rešenje za standardne prozore u vašem domu ili kancelariji. Naši rolo komarnici se odlikuju jednostavnim rukovanjem – laganim povlačenjem se spuštaju i podižu, a kada vam nisu potrebni, potpuno se pakuju u svoju aluminijumsku kutiju. 
+                    Izrađeni su od kvalitetnih nemačkih materijala sa mrežicom od staklenih vlakana (fiberglas) koja je otporna na sve vremenske uslove i UV zrake.</p>
+            </div>
+            <div class="spec-item reveal-left">
+                <h3>Plise komarnici za balkonska vrata</h3>
+    <p>Plise ili harmonika komarnici su najbolji izbor za balkonska vrata, terase i velike staklene površine u Beogradu. Zbog svog specifičnog bočnog otvaranja i nedostatka povratnog mehanizma, plise komarnik možete 
+        ostaviti otvorenim u bilo kom položaju. Nemaju donji prag koji bi vam smetao pri gaženju, što ih čini izuzetno praktičnim i bezbednim za svakodnevni prolazak.</p>
+            </div>
+            <div class="spec-item reveal-left">
+                <h3>Fiksni aluminijumski komarnici</h3>
+    <p>Tražite najpovoljnije, a dugotrajno rešenje za prostorije koje retko otvarate ili gde vam nije potreban prolaz? Fiksni alu komarnici se montiraju direktno na štok prozora i pružaju stopostotnu zaštitu od komaraca i 
+        ostalih insekata. Ram je napravljen od plastificiranog aluminijuma visokog kvaliteta koji se savršeno uklapa uz vašu postojeću PVC ili ALU stolariju.</p>
+            </div>
+            <div class="spec-item reveal-left">
+                <h3>Ugradnja i servis komarnika po meri</h3>
+    <p>Svi naši komarnici se izrađuju tačno po merama vaših otvora, čime garantujemo maksimalnu zaptivenost bez ijedne šupljine. Pored profesionalne ugradnje, vršimo i brz servis komarnika, zamenu p
+        okidanih mrežica i podešavanje mehanizama. Pozovite nas za besplatnu procenu na terenu i osigurajte miran san tokom celog leta bez dosadnih insekata.</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+    <div class="footer-container">
+        <!-- Kolona 1: O nama / Logo -->
+        <div class="footer-col">
+    <a href="index.html" class="footer-logo-link">
+        <img src="Logo-rational-komerc.png" alt="Premium Stolarija Logo" class="footer-logo-img">
+    </a>
+    <p>Vrhunska izrada i montaža ALU i PVC stolarije. Kvalitet bez kompromisa za vaš dom ili poslovni prostor.</p>
+</div>
+
+        <!-- Kolona 2: Brzi linkovi -->
+        <div class="footer-col">
+            <h4>PROIZVODI</h4>
+            <ul>
+                <li><a href="pergola.html">Pergola Tende</a></li>
+                <li><a href="pvc-prozori.html">PVC Prozori</a></li>
+                <li><a href="alu-servis.html">Servis ALU Stolarije</a></li>
+                <li><a href="garazna-vrata.html">Garažna Vrata</a></li>
+            </ul>
+        </div>
+
+        <!-- Kolona 3: Kontakt -->
+        <div class="footer-col">
+            <h4>KONTAKT</h4>
+            <p>📍 <a href="https://www.google.com/maps/place/PVC+stolarija+net/@44.8008002,20.4887484,20z/data=!4m6!3m5!1s0x475a7a82ea59744d:0x5be36dd72efe27f2!8m2!3d44.8007909!4d20.4886962!16s%2Fg%2F11c0phwvnw?hl=en-US&entry=ttu&g_ep=EgoyMDI2MDUxMC4wIKXMDSoASAFQAw%3D%3D" target="_blank" class="footer-link">
+    Djevdjelijska 9, Beograd</a></p>
+            <p>📞 <a href="tel:+38163359210">+381 63 359 210</a></p>
+            <p>✉️ <a href="mailto:rationalkomerc@gmail.com">rationalkomerc@gmail.com</a></p>
+        </div>
+
+        <!-- Kolona 4: Radno vreme -->
+        <div class="footer-col">
+            <h4>RADNO VREME</h4>
+            <p>Ponedeljak - Petak: 08:00 - 17:00</p>
+            <p>Subota: 08:00 - 14:00</p>
+            <p>Nedelja: Zatvoreno</p>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        <p>&copy; 2026 Rational Komerc. Sva prava zadržana. </p>
+    </div>
+</footer>
+
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.reveal-left').forEach(el => observer.observe(el));
+
+        // 2. Mobilni meni (Tri crtice)
+    const menuBtn = document.getElementById('mobile-menu');
+    const navMenu = document.getElementById('nav-menu');
+    const body = document.body;
+
+    menuBtn.addEventListener('click', () => {
+        navMenu.classList.toggle('active');
+        menuBtn.classList.toggle('is-active');
+        body.classList.toggle('no-scroll');
+    });
+
+    // 3. Mobilni Dropdown (NA KLIK - Identican kao na PVC strani)
+    document.querySelectorAll('.mobile-drop').forEach(link => {
+        link.addEventListener('click', function(e) {
+            if (window.innerWidth <= 1024) {
+                e.preventDefault();
+                // Prvo zatvori sve ostale otvorene dropdown-ove (opciono, ali lepse)
+                document.querySelectorAll('.dropdown').forEach(d => {
+                    if (d !== this.parentElement) d.classList.remove('open');
+                });
+                this.parentElement.classList.toggle('open');
+            }
+        });
+    });
+    </script>
+</body>
+</html>
