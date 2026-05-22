@@ -810,11 +810,16 @@ footer {
     </div>
 </footer>
 <script>
-    // 1. Animacija na scroll
+    // 1. Animacija na scroll - popravljen selektor da aktivira i kartice
     const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('active'); });
+        entries.forEach(entry => { 
+            if (entry.isIntersecting) entry.target.classList.add('active'); 
+        });
     }, { threshold: 0.1 });
-    document.querySelectorAll('.reveal-left').forEach(el => observer.observe(el));
+    
+    // Selektuje i elemente koji uleću levo, i same proizvodne kartice
+    document.querySelectorAll('.reveal-left, .reveal-card').forEach(el => observer.observe(el));
+
     // 2. Mobilni meni (Tri crtice)
     const menuBtn = document.getElementById('mobile-menu');
     const navMenu = document.getElementById('nav-menu');
@@ -823,6 +828,19 @@ footer {
         navMenu.classList.toggle('active');
         menuBtn.classList.toggle('is-active');
         body.classList.toggle('no-scroll');
+    });
+
+    // 3. Mobilni Dropdown na klik
+    document.querySelectorAll('.mobile-drop').forEach(link => {
+        link.addEventListener('click', function(e) {
+            if (window.innerWidth <= 1024) {
+                e.preventDefault();
+                document.querySelectorAll('.dropdown').forEach(d => {
+                    if (d !== this.parentElement) d.classList.remove('open');
+                });
+                this.parentElement.classList.toggle('open');
+            }
+        });
     });
     // 3. Mobilni Dropdown (NA KLIK - Identican kao na PVC strani)
     document.querySelectorAll('.mobile-drop').forEach(link => {
