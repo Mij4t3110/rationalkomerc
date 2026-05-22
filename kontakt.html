@@ -338,6 +338,13 @@ footer {
         object-fit: cover;           /* Sprečava da se slika deformiše ili razvuče */
         border-radius: 8px;          /* Blago zaobljene ivice, ako ti se uklapa u dizajn */
     }
+    .map-responsive  {
+        width: 100% !important;
+        height: 250px !important;     /* Slika sada prati tačnu visinu kontejnera */
+        object-fit: cover !important; /* Čuva proporcije mape da ne bude spljoštena */
+        display: block;               /* Uklanja sistemski prazan prostor ispod slike */
+    }
+
 }
     </style>
 </head>
