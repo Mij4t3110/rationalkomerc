@@ -2,7 +2,8 @@
 <html lang="sr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="Rational Komerc - rolo vrata, PVC i ALU stolarija, pergole, tende i servis u Beogradu. Brza izrada i montaža., initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Rational Komerc - rolo vrata, PVC i ALU stolarija, pergole, tende i servis u Beogradu. Brza izrada i montaža.">
     <title>Rolo vrata, PVC i ALU stolarija Beograd | Rational Komerc</title>
     <style>
         :root {
@@ -780,7 +781,6 @@ footer {
     </a>
     <p>Vrhunska izrada i montaža ALU i PVC stolarije. Kvalitet bez kompromisa za Vaš dom ili poslovni prostor.</p>
 </div>
-
         <!-- Kolona 2: Brzi linkovi -->
         <div class="footer-col">
             <h4>PROIZVODI</h4>
@@ -791,7 +791,6 @@ footer {
                 <li><a href="garazna-vrata.html">Garažna Vrata</a></li>
             </ul>
         </div>
-
         <!-- Kolona 3: Kontakt -->
         <div class="footer-col">
             <h4>KONTAKT</h4>
@@ -800,7 +799,6 @@ footer {
             <p>📞 <a href="tel:+38163359210">+381 63 359 210</a></p>
             <p>✉️ <a href="mailto:rationalkomerc@gmail.com">rationalkomerc@gmail.com</a></p>
         </div>
-
         <!-- Kolona 4: Radno vreme -->
         <div class="footer-col">
             <h4>RADNO VREME</h4>
@@ -809,30 +807,25 @@ footer {
             <p>Nedelja: Zatvoreno</p>
         </div>
     </div>
-
     <div class="footer-bottom">
         <p>&copy; 2026 Rational Komerc. Sva prava zadržana. </p>
     </div>
 </footer>
-
 <script>
     // 1. Animacija na scroll
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('active'); });
     }, { threshold: 0.1 });
     document.querySelectorAll('.reveal-left').forEach(el => observer.observe(el));
-
     // 2. Mobilni meni (Tri crtice)
     const menuBtn = document.getElementById('mobile-menu');
     const navMenu = document.getElementById('nav-menu');
     const body = document.body;
-
     menuBtn.addEventListener('click', () => {
         navMenu.classList.toggle('active');
         menuBtn.classList.toggle('is-active');
         body.classList.toggle('no-scroll');
     });
-
     // 3. Mobilni Dropdown (NA KLIK - Identican kao na PVC strani)
     document.querySelectorAll('.mobile-drop').forEach(link => {
         link.addEventListener('click', function(e) {
@@ -846,7 +839,6 @@ footer {
             }
         });
     });
-
     // 4. Jezici
     const langDrop = document.querySelector('.lang-dropdown');
     langDrop.addEventListener('click', function(e) {
@@ -855,15 +847,12 @@ footer {
     });
     window.addEventListener('click', () => { if(langDrop) langDrop.classList.remove('open-lang'); });
     window.addEventListener('scroll', reveal);
-
 function reveal() {
     var reveals = document.querySelectorAll('.reveal-card');
-
     for (var i = 0; i < reveals.length; i++) {
         var windowHeight = window.innerHeight;
         var revealTop = reveals[i].getBoundingClientRect().top;
         var revealPoint = 150; // Koliko piksela pre nego što se pojavi
-
         if (revealTop < windowHeight - revealPoint) {
             reveals[i].classList.add('active');
         }
