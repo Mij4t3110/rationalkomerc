@@ -329,12 +329,21 @@ footer {
     font-weight: 600;
 }
 
-/* --- SMANJIVANJE IFRAME GOOGLE MAPE NA TELEFONU --- */
+/* SVE MOBILNE ADAPTACIJE NA JEDNOM MESTU (MAPA + NASLOVI) */
 @media (max-width: 768px) {
     .map-responsive iframe {
         width: 100% !important;
-        height: 200px !important;
+        height: 250px !important;
         display: block !important;
+    }
+
+    .hero-content h1 {
+        font-size: 1.8rem !important;
+    }
+
+    .container h1 {
+        font-size: 1.8rem !important;
+        margin-bottom: 15px;
     }
 }
 
