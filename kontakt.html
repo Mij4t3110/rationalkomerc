@@ -328,24 +328,16 @@ footer {
 .contact-info a {
     font-weight: 600;
 }
+
+/* --- SMANJIVANJE IFRAME GOOGLE MAPE NA TELEFONU --- */
 @media (max-width: 768px) {
-    /* ... tvoj stari kod za telefon (logo, dugmići, skrol kutija...) ... */
-
-    /* KOD ZA SLIKU MAPE NA TELEFONU */
-    .map-container {
-        width: 100% !important;     /* Primorava sliku da se skupi na širinu ekrana */
-        height: 250px !important;    /* Smanjuje visinu mape da ne proguta ceo ekran */
-        object-fit: cover;           /* Sprečava da se slika deformiše ili razvuče */
-        border-radius: 8px;          /* Blago zaobljene ivice, ako ti se uklapa u dizajn */
-    }
-    .map-responsive  {
+    .map-responsive iframe {
         width: 100% !important;
-        height: 250px !important;     /* Slika sada prati tačnu visinu kontejnera */
-        object-fit: cover !important; /* Čuva proporcije mape da ne bude spljoštena */
-        display: block;               /* Uklanja sistemski prazan prostor ispod slike */
+        height: 250px !important;
+        display: block !important;
     }
-
 }
+
     </style>
 </head>
 <body>
@@ -473,7 +465,7 @@ footer {
             </ul>
         </div>
 
-        <!-- Kolona 3: Kontakt -->
+        <!-- Kolona 3: Contact -->
         <div class="footer-col">
             <h4>KONTAKT</h4>
             <p>📍 <a href="https://www.google.com/maps/place/PVC+stolarija+net/@44.8008002,20.4887484,20z/data=!4m6!3m5!1s0x475a7a82ea59744d:0x5be36dd72efe27f2!8m2!3d44.8007909!4d20.4886962!16s%2Fg%2F11c0phwvnw?hl=en-US&entry=ttu&g_ep=EgoyMDI2MDUxMC4wIKXMDSoASAFQAw%3D%3D" target="_blank" class="footer-link">
@@ -530,11 +522,6 @@ footer {
             }
         });
     });
-
-
-
-
-    
     </script>
 </body>
 </html>
