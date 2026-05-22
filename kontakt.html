@@ -328,6 +328,17 @@ footer {
 .contact-info a {
     font-weight: 600;
 }
+@media (max-width: 768px) {
+    /* ... tvoj stari kod za telefon (logo, dugmići, skrol kutija...) ... */
+
+    /* KOD ZA SLIKU MAPE NA TELEFONU */
+    .map-container {
+        width: 100% !important;     /* Primorava sliku da se skupi na širinu ekrana */
+        height: 250px !important;    /* Smanjuje visinu mape da ne proguta ceo ekran */
+        object-fit: cover;           /* Sprečava da se slika deformiše ili razvuče */
+        border-radius: 8px;          /* Blago zaobljene ivice, ako ti se uklapa u dizajn */
+    }
+}
     </style>
 </head>
 <body>
